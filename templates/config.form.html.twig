@@ -1,0 +1,41 @@
+<div class="row">
+  <div class="col-md-12">
+    <div class="card">
+      <div class="card-header">
+        <h3>Конфигуратор</h3>
+      </div>
+      <div class="card-body">
+        <div class="spaced" id="tabsbody">
+          <table class="tab_cadre_fixe">
+            <tr class="tab_bg_1">
+              <td width="30%" class="text-end">
+                Генерация данных статистики обращений с учетом стандарта SLA:
+              </td>
+              <td width="auto">
+                <button  type="button" id="delete_{{random}}" class="btn btn-danger" {{count_fields?'':'style=\'display: none;\''}}>Удалить</button>
+
+                <button  type="button" id="generate_{{random}}" class="btn btn-primary"{{count_fields?'style=\'display: none;\'':''}}>С генерировать</button>
+              </td>
+              <td width="70%">
+                <span id="count_fields_{{random}}">({{count_fields}})</span>
+                <div class="spinner-border text-primary" role="status" id="loader_{{random}}" style="display:none">
+                  <span class="visually-hidden">Loading...</span>
+                </div>
+              </td>
+            </tr>
+            <tr class="tab_bg_1">
+              <td width="30%" class="text-end">
+                Активировать статистику SLA при создании обращений:
+              </td>
+              <td>
+                <div class="form-check form-switch">
+                  <input class="form-check-input" type="checkbox" id="active_sla_{{random}}" {{config.active_sla?'checked':''}}>
+                </div>
+              </td>
+            </tr>
+          </table>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
