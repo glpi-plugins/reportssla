@@ -62,7 +62,11 @@ function plugin_init_reportssla()
       if(!in_array($profiles,array(['5'=>'5'],['10'=>'10'],['12'=>'12'],['13'=>'13'],['36'=>'36'])))return;
       $PLUGIN_HOOKS['redefine_menus']['reportssla'] = 'plugin_reportssla_redefine_menus';
     }
-
+    //Подменяем шаблон отрисовки списка заявок
+    $loader = \Glpi\Application\View\TemplateRenderer::getInstance()->getEnvironment()->getLoader();
+    if ($loader instanceof \Twig\Loader\FilesystemLoader) {
+        $loader->prependPath(GLPI_ROOT . '/plugins/reportssla/templates');
+    }
 }
 
 

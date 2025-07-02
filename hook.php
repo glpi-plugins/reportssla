@@ -142,3 +142,20 @@ function plugin_reportssla_redefine_menus($menu)
 
    return $menu;
 }
+function plugin_reportssla_init()
+{
+   error_log("PLUGIN_REPORTSSLA_INIT CALLED");
+
+   $loader = \Glpi\Application\View\TemplateRenderer::getInstance()->getEnvironment()->getLoader();
+   if ($loader instanceof \Twig\Loader\FilesystemLoader) {
+       error_log("LOADER IS FilesystemLoader");
+       $loader->prependPath(GLPI_ROOT . '/plugins/reportssla/templates');
+       error_log("prependPath done");
+   } else {
+       error_log("LOADER IS NOT FilesystemLoader");
+   }
+   $paths = $loader->getPaths(\Twig\Loader\FilesystemLoader::MAIN_NAMESPACE);
+    foreach ($paths as $p) {
+        error_log("TWIG PATH: $p");
+    }
+}
