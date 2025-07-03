@@ -246,11 +246,16 @@ class PluginReportsslaConfig extends CommonDBTM
         //Оставшееся время от SLA
         $remainsHoursSla = round($sla['number_time']) - $totalTimeSolvedInWaiting;
         //
-        //SLA более 80%
 
+        if($sla['number_time'] == 0)
+        {
+          $remainsHoursSla = 0;
+        }
+        //SLA более 80%
         if($remainsHoursSla > 0)
         {
           $sla_nold  = round(100-($remainsHoursSla / round($sla['number_time'])*100)) > 80 ? 'Да':'Нет' ;
+
           $sla_violated = 'Нет';
 
           //Конвертация Оставшееся время от SLA в формат H:i
